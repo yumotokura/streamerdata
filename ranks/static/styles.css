@@ -1,0 +1,100 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+
+/* 追加したCSS */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.container {
+  margin-top: 160px; /* ヘッダーの高さに合わせて調整 */
+}
+
+.nav-links {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.nav-links a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #007BFF;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+.nav-links a img {
+  width: 50px;
+  height: 50px;
+  margin: 0 10px;
+  vertical-align: middle;
+}

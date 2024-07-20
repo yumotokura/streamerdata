@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twitch Stream Data</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1>Twitch Stream Data</h1>
+        <div class="nav-links">
+            <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='images/all.png') }}" alt="All Icon">
+            </a>
+            <a href="{{ url_for('twitch') }}">
+                <img src="{{ url_for('static', filename='images/twitch_icon.png') }}" alt="Twitch Icon">
+            </a>
+            <a href="{{ url_for('youtube') }}">
+                <img src="{{ url_for('static', filename='images/youtube_icon.png') }}" alt="YouTube Icon">
+            </a>
+            <a href="{{ url_for('openrec') }}">
+                <img src="{{ url_for('static', filename='images/openrec_icon.png') }}" alt="OpenRec Icon">
+            </a>
+        </div>
+    </div>
+    <div class="container">
+        <table>
+            <tr>
+                <th>順位</th>
+                <th>配信者アイコン</th>
+                <th>配信者名</th>
+                <th>同時接続数</th>
+                <th>プレイ中のゲーム</th>
+                <th>配信タイトル</th>
+                <th>サムネイル</th>
+            </tr>
+            {% for row in stream_data %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td><a href="{{ row['stream_url'] }}" target="_blank"><img src="{{ row['profile_image_url'] }}" alt="配信者アイコン" class="avatar"></a></td>
+                
+                <td>{{ row['user_name'] }}</td>
+                <td>{{ row['viewer_count'] }}</td>
+                <td>{{ row['game_name'] }}</td>
+                <td>{{ row['title'] }}</td>
+                <td><a href="{{ row['stream_url'] }}" target="_blank"><img src="{{ row['thumbnail_url'] }}" alt="サムネイル" class="thumbnail"></a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

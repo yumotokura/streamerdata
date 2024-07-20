@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Combined Stream Data</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1>Combined Stream Data</h1>
+        <div class="nav-links">
+            <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='images/all.png') }}" alt="All Icon">
+            </a>
+            <a href="{{ url_for('twitch') }}">
+                <img src="{{ url_for('static', filename='images/twitch_icon.png') }}" alt="Twitch Icon">
+            </a>
+            <a href="{{ url_for('youtube') }}">
+                <img src="{{ url_for('static', filename='images/youtube_icon.png') }}" alt="YouTube Icon">
+            </a>
+            <a href="{{ url_for('openrec') }}">
+                <img src="{{ url_for('static', filename='images/openrec_icon.png') }}" alt="OpenRec Icon">
+            </a>
+        </div>
+    </div>
+    <div class="container">
+        <table>
+            <tr>
+                <th>順位</th>
+                <th>配信者アイコン</th>
+                <th>配信者名</th>
+                <th>同時接続数</th>
+                <th>配信タイトル</th>
+                <th>サムネイル</th>
+            </tr>
+            {% for stream in stream_data %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td><a href="{{ stream['stream_url'] }}" target="_blank"><img src="{{ stream['profile_image_url'] }}" alt="配信者アイコン" class="avatar"></a></td>
+                <td>{{ stream['user_name'] }}</td>
+                <td>{{ stream['viewer_count'] }}</td>
+                <td>{{ stream['title'] }}</td>
+                <td><a href="{{ stream['stream_url'] }}" target="_blank"><img src="{{ stream['thumbnail_url'] }}" alt="サムネイル" class="thumbnail"></a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
