@@ -16,4 +16,4 @@ Fletでも実装したが、スマホアプリとしてのデプロイがうま�
 
 サンプル画像：  
 アイコンまたはサムネイルをクリックすると該当のストリーミングサイトURLに飛び閲覧可能。  
-<img src=./sample.png wide="2000" height="1000" margin-left="20" margin-righat="20">
+<img src=./sample.png wide="2000" height="1000" margin-left="100" margin-righat="100">
