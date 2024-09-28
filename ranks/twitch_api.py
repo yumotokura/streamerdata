@@ -18,7 +18,6 @@ class TwitchAPI:
 
         メソッド詳細:
             初期化時にインスタンス変数を設定
-            ※common.pyに統一予定
             
         :param twitch_strm_list: Twitch配信者情報のリスト
         :type twitch_strm_list: list
@@ -39,6 +38,7 @@ class TwitchAPI:
 
         メソッド詳細:
             config.iniからtwitchAPIの認証情報を取得する
+            ※common.pyに統一予定
         """
         config_file_path = os.path.join(os.path.dirname(__file__), 'config.ini')
         inifile = configparser.ConfigParser()
