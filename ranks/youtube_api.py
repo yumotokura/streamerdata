@@ -13,7 +13,7 @@ class YoutubeAPI:
     """
     def __init__(self) -> None:
         # 初期化時にインスタンス変数を設定
-        self.global_streams_list = []
+        self.youtube_streams_list = []
         self.api_key = None
         self.get_configini()
 
@@ -70,9 +70,9 @@ class YoutubeAPI:
         # 視聴者数で降順ソート
         streams_list.sort(key=lambda x: int(x['viewer_count']) if x['viewer_count'].isdigit() else 0, reverse=True)
 
-        # 読み込んだデータをグローバル変数に保存
-        self.global_streams_list = streams_list
-        return self.global_streams_list
+        # 読み込んだデータをインスタンス変数に保存
+        self.youtube_streams_list = streams_list
+        return self.youtube_streams_list
 
     def get_channel_info(self, youtube, channel_id):
         request = youtube.channels().list(
@@ -103,5 +103,5 @@ class YoutubeAPI:
             return "N/A"
         
     def contains_japanese(self, text):
-        # 日本語を含むかどうかを判定する正規表現
+        # 日本語を含むかどうかを判定する正規表現。※これを実施しないと海外の配信が含まれてしまう。
         return bool(re.search(r'[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff]', text))

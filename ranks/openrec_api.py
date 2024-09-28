@@ -10,7 +10,7 @@ class OpenrecAPI:
     """
     def __init__(self) -> None:
         # 初期化時にインスタンス変数を設定
-        self.global_streams_list = []
+        self.openrec_streams_list = []
 
     def openrec_get_streams(self):
         url = 'https://public.openrec.tv/external/api/v5/movies'
@@ -36,9 +36,9 @@ class OpenrecAPI:
                     }
                     streams_list.append(stream_dict)
 
-                # 読み込んだデータをグローバル変数に保存
-                self.global_streams_list = streams_list
-                return self.global_streams_list
+                # 読み込んだデータをインスタンス変数に保存
+                self.openrec_streams_list = streams_list
+                return self.openrec_streams_list
 
             except Exception as e:
                 print(f"データの処理中にエラーが発生しました: {e}")

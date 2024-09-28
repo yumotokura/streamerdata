@@ -12,7 +12,7 @@ class TwitchAPI:
     """
     def __init__(self) -> None:
         # 初期化時にインスタンス変数を設定
-        self.global_streams_list = []
+        self.twitch_streams_list = []
         self.clientID = None
         self.secretID = None
         self.get_configini()
@@ -69,9 +69,9 @@ class TwitchAPI:
                 break
             i += 1
 
-        # 読み込んだデータをグローバル変数に保存
-        self.global_streams_list = streams_list
+        # 読み込んだデータをインスタンス変数に保存
+        self.twitch_streams_list = streams_list
         await twitch.close()
-        return self.global_streams_list
+        return self.twitch_streams_list
 
 
