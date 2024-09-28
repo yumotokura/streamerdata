@@ -2,7 +2,6 @@ from flask import Flask, render_template
 from twitch_api import TwitchAPI
 from youtube_api import YoutubeAPI
 from openrec_api import OpenrecAPI
-from common import delete_platf_pkl, read_platf_stream_data
 import asyncio
 
 app = Flask(__name__)

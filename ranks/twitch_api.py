@@ -4,21 +4,42 @@ from twitchAPI.twitch import Twitch
 
 class TwitchAPI:
     """
-    メソッド概要：
+    クラス概要：
         TwitchAPIを扱うクラスです
 
-    メソッド詳細：
+    クラス詳細：
         TwitchAPIを扱うクラスです
+        Twitchで配信中の上位50名の情報を取得します。
     """
     def __init__(self) -> None:
-        # 初期化時にインスタンス変数を設定
-        self.twitch_streams_list = []
+        """
+        メソッド概要:
+            初期化時にインスタンス変数を設定
+
+        メソッド詳細:
+            初期化時にインスタンス変数を設定
+            ※common.pyに統一予定
+            
+        :param twitch_strm_list: Twitch配信者情報のリスト
+        :type twitch_strm_list: list
+        :param clientID: clientID認証情報
+        :type clientID: str
+        :param secretID: secretID認証情報
+        :type secretID: str
+        """
+        self.twitch_strm_list = []
         self.clientID = None
         self.secretID = None
         self.get_configini()
 
     def get_configini(self) -> str:
-        # twitchAPIの設定ファイルの読み込み
+        """
+        メソッド概要:
+            twitchAPIの設定ファイルの読み込みを行う
+
+        メソッド詳細:
+            config.iniからtwitchAPIの認証情報を取得する
+        """
         config_file_path = os.path.join(os.path.dirname(__file__), 'config.ini')
         inifile = configparser.ConfigParser()
         inifile.read(config_file_path)
@@ -27,6 +48,16 @@ class TwitchAPI:
         self.secretID = inifile.get('TWITCH', 'SECRET_ID')
 
     async def twitch_get_streams(self) -> None:
+        """
+        メソッド概要:
+            Twitchから上位50件の配信者情報を取得する
+
+        メソッド詳細:
+            twitchAPIを使用し、上位50件の配信者情報を返却する
+
+        :return self.twitch_strm_list: Twitch配信者情報のlist
+        :rtype self.twitch_strm_list: list
+        """
         # twitchAPIの設定ファイルの読み込み
         twitch = await Twitch(self.clientID, self.secretID)
         await twitch.authenticate_app([])
@@ -70,8 +101,8 @@ class TwitchAPI:
             i += 1
 
         # 読み込んだデータをインスタンス変数に保存
-        self.twitch_streams_list = streams_list
+        self.twitch_strm_list = streams_list
         await twitch.close()
-        return self.twitch_streams_list
+        return self.twitch_strm_list
 
 
