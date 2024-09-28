@@ -22,7 +22,7 @@ class OpenrecAPI:
         """
         self.oprc_strm_list = []
 
-    def openrec_get_streams(self):
+    def openrec_get_streams(self) -> str:
         """
         メソッド概要:
             openrecから上位50件の配信者情報を取得する

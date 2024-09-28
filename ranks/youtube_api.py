@@ -43,7 +43,7 @@ class YoutubeAPI:
         inifile.read(config_file_path)
         self.api_key = inifile.get('YOUTUBE', 'API_KEY')
 
-    def youtube_get_streams(self):
+    def youtube_get_streams(self) -> list:
         """
         メソッド概要:
             youtubeから上位50件の配信者情報を取得する
@@ -103,7 +103,7 @@ class YoutubeAPI:
         self.ytb_strm_list = streams_list
         return self.ytb_strm_list
 
-    def get_channel_info(self, youtube, channel_id):
+    def get_channel_info(self, youtube, channel_id: str) -> dict:
         """
         メソッド概要:
             channel_id に対応するYouTubeチャンネルの詳細情報を取得しプロフィール画像を取得する
@@ -130,7 +130,7 @@ class YoutubeAPI:
         else:
             return None
 
-    def get_viewer_count(self, youtube, video_id):
+    def get_viewer_count(self, youtube, video_id: str) -> dict:
         """
         メソッド概要:
             video_id に対応するライブ配信の詳細情報を取得する
@@ -162,7 +162,7 @@ class YoutubeAPI:
         else:
             return "N/A"
         
-    def contains_japanese(self, text):
+    def contains_japanese(self, text: str) -> str:
         """
         メソッド概要:
             日本語を含むかどうかを判定する正規表現。

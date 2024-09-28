@@ -47,7 +47,7 @@ class TwitchAPI:
         self.clientID = inifile.get('TWITCH', 'CLIENT_ID')
         self.secretID = inifile.get('TWITCH', 'SECRET_ID')
 
-    async def twitch_get_streams(self) -> None:
+    async def twitch_get_streams(self) -> list:
         """
         メソッド概要:
             Twitchから上位50件の配信者情報を取得する
